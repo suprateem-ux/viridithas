@@ -41,7 +41,7 @@ use cli::Subcommands::{Analyse, CountPositions, Datagen, Splat};
 use cli::Subcommands::{Bench, Merge, NNUEDryRun, Perft, Quantise, Spsa, Verbatim, VisNNUE};
 
 /// The name of the engine.
-pub static NAME: &str = "SupraNova";
+pub static NAME: &str = "Viridithas";
 /// The version of the engine.
 pub static VERSION: &str = env!("CARGO_PKG_VERSION");
 
