@@ -580,7 +580,7 @@ fn print_uci_response(info: &SearchInfo, full: bool) {
     } else {
         "-dev"
     };
-    println!("id name {NAME} {VERSION}{version_extension}");
+    println!("id name SupraNova");
     println!("id author Suprateem");
     println!("option name Hash type spin default {UCI_DEFAULT_HASH_MEGABYTES} min 1 max {UCI_MAX_HASH_MEGABYTES}");
     println!("option name Threads type spin default 1 min 1 max 512");
@@ -608,7 +608,7 @@ pub fn main_loop() -> anyhow::Result<()> {
     } else {
         "-dev"
     };
-    println!("{NAME} {VERSION}{version_extension} by Suprateem");
+    println!("SupraNova by Suprateem");
 
     let mut tt = TT::new();
     tt.resize(UCI_DEFAULT_HASH_MEGABYTES * MEGABYTE, 1); // default hash size
