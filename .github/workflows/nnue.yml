@@ -1,0 +1,31 @@
+name: Download and Push NNUE
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  download-and-push-nnue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download latest NNUE file
+        run: |
+          curl -s "https://api.github.com/repos/cosmobobak/viridithas-networks/releases/latest" \
+          | grep -o '"browser_download_url": "[^"]*' \
+          | awk -F'"' '{print $4}' \
+          | xargs -L 1 wget -O viridithas.nnue.zst
+
+      - name: Commit and push NNUE file
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch origin master
+          git pull --rebase origin master
+          git add -f viridithas.nnue.zst
+          git commit -m "Add latest NNUE file" || echo "No changes to commit"
+          git push
